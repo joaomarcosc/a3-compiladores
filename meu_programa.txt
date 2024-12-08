@@ -1,0 +1,50 @@
+inicioDoPrograma
+
+monstro idade, anoAtual
+trapezio salario, aumento
+frango saudacao
+barril ativo
+
+idade = 25
+anoAtual = 2024
+salario = 2500.0
+aumento = 0.1
+saudacao = "Olá, bem-vindo ao sistema!"
+ativo = verdadeiro
+
+escreva(saudacao)
+
+eleQueQueremos (ativo igual verdadeiro) {
+    escreva("O sistema está ativo.")
+} naoVaiDarNao {
+    escreva("O sistema está inativo.")
+}
+
+queroMais (idade menor 30) {
+    escreva("Idade atual: ")
+    escreva(idade)
+    idade = idade mais 1
+}
+
+mandaMais (anoAtual = 2024; idade menor 30; idade = idade mais 1) {
+    escreva("Ano atual: ")
+    escreva(anoAtual)
+}
+
+salario = salario mais (salario vezes aumento)
+escreva("Salário com aumento: ")
+escreva(salario)
+
+escreva("Digite a sua idade: ")
+leia(idade)
+escreva("Você tem: ")
+escreva(idade)
+escreva(" anos.")
+
+eleQueQueremos (idade maior 18) {
+    escreva("Você é maior de idade.")
+} naoVaiDarNao {
+    escreva("Você é menor de idade.")
+}
+
+fimDoPrograma

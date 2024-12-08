@@ -1,0 +1,46 @@
+<programa> ::= "inicioDoPrograma" <declarações> <bloco> "fimDoPrograma"
+
+<declarações> ::= (<declaração>)*
+
+<declaração> ::= ("monstro" | "trapezio" | "frango" | "barril") <identificadores> "."
+
+<identificadores> ::= <identificador> ("," <identificador>)*
+
+<bloco> ::= (<comando>)*
+
+<comando> ::= <comando_leitura> 
+            | <comando_escrita> 
+            | <comando_atribuicao> 
+            | <comando_condicional> 
+            | <comando_enquanto>
+            | <comando_para>
+
+<comando_leitura> ::= "leia" "(" <identificador> ")" "."
+
+<comando_escrita> ::= "escreva" "(" (<identificador> | <string>) ")" "."
+
+<comando_atribuicao> ::= <identificador> "=" <expressao> "."
+
+<comando_condicional> ::= "eleQueQueremos" "(" <expressao> <operador_relacional> <expressao> ")" "{" <bloco> "}" ("naoVaiDarNao" "{" <bloco> "}")?
+
+<comando_enquanto> ::= "queroMais" "(" <expressao> <operador_relacional> <expressao> ")" "{" <bloco> "}"
+
+<comando_para> ::= "mandaMais" "(" <comando_atribuicao> <expressao> <operador_relacional> <expressao> ";" <comando_atribuicao> ")" "{" <bloco> "}"
+
+<expressao> ::= <termo> ("mais" | "menos" <termo>)*
+
+<termo> ::= <fator> ("vezes" | "dividido" | "modulo" <fator>)*
+
+<fator> ::= <numero> | <identificador> | "(" <expressao> ")"
+
+<operador_relacional> ::= "igual" | "diferente" | "menor" | "maior" | "menor_igual" | "maior_igual"
+
+<identificador> ::= <letra> (<letra> | <digito>)*
+
+<numero> ::= <digito>+ ("." <digito>+)? 
+
+<letra> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+
+<digito> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+<string> ::= "\"" (<caractere>)* "\""
