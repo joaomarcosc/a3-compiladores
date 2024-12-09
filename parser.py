@@ -1,5 +1,3 @@
-from lexer import tokenize
-
 class CodeGenerator:
     def __init__(self):
         self.code = []
@@ -47,15 +45,15 @@ class Parser:
 
     def parse_operador_relacional(self, operador):
         operadores_map = {
-        'menor': '<',
-        'maior': '>',
-        'igual': '==',
-        'diferente': '!=',
-        'menor_igual': '<=',
-        'maior_igual': '>=',
-        'e': 'and',
-        'ou': 'or',
-        'modulo': '%',
+        '<': '<',
+        '>': '>',
+        '==': '==',
+        '!=': '!=',
+        '<=': '<=',
+        '>=': '>=',
+        '&&': 'and',
+        '||': 'or',
+        '%': '%',
     }
         if operador not in operadores_map:
             raise ValueError(f"Erro Semântico: Operador relacional '{operador}' inválido.")
@@ -86,7 +84,6 @@ class Parser:
         if not self.match('RPAREN'):
             self.error("Esperado ')' após expressão em 'eleQueQueremos'")
 
-        # Gera o código para a condicional
         self.generator.add_line(f"if {left_expr} {operador_python} {right_expr}:")
         self.generator.increase_indent()
 
@@ -263,7 +260,7 @@ class Parser:
         left_code, left_type = self.termo()
         while self.match('ADD_OP'):
             op = self.tokens[self.position - 1][1]
-            op_python = {'mais': '+', 'menos': '-'}.get(op, op)
+            op_python = {'+': '+', '-': '-'}.get(op, op)
             right_code, right_type = self.termo()
             left_code = f"({left_code} {op_python} {right_code})"
             left_type = "trapezio" if left_type == "trapezio" or right_type == "trapezio" else "monstro"

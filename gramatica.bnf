@@ -15,9 +15,9 @@
             | <comando_enquanto>
             | <comando_para>
 
-<comando_leitura> ::= "leia" "(" <identificador> ")" "."
+<comando_leitura> ::= "getMonster" "(" <identificador> ")" "."
 
-<comando_escrita> ::= "escreva" "(" (<identificador> | <string>) ")" "."
+<comando_escrita> ::= "showMeTheShape" "(" (<identificador> | <string>) ")" "."
 
 <comando_atribuicao> ::= <identificador> "=" <expressao> "."
 
@@ -27,13 +27,13 @@
 
 <comando_para> ::= "mandaMais" "(" <comando_atribuicao> <expressao> <operador_relacional> <expressao> ";" <comando_atribuicao> ")" "{" <bloco> "}"
 
-<expressao> ::= <termo> ("mais" | "menos" <termo>)*
+<expressao> ::= <termo> ("+" | "-" <termo>)*
 
-<termo> ::= <fator> ("vezes" | "dividido" | "modulo" <fator>)*
+<termo> ::= <fator> ("*" | "/" | "%" <fator>)*
 
 <fator> ::= <numero> | <identificador> | "(" <expressao> ")"
 
-<operador_relacional> ::= "igual" | "diferente" | "menor" | "maior" | "menor_igual" | "maior_igual"
+<operador_relacional> ::= "==" | "!=" | "<" | ">" | "<=" | ">="
 
 <identificador> ::= <letra> (<letra> | <digito>)*
 
